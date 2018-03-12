@@ -1,0 +1,4 @@
+Input names and mails in following format
+Name1, mailname@mail.com mailname2@mail.com mailname3@mail.com
+Name2, mail2name@mail.com mail2name2@mail.com mail2name3@mail.com
+Name3, mail3name@mail.com mailn3ame2@mail.com mail3name3@mail.com
