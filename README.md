@@ -4,7 +4,9 @@ Randomly separate people into groups and notify each group member about being in
 
 Usage:
 
+
     1. Clone this repo on your computer.
+
 
     2. Change loginCredentials.txt file so that:
 
