@@ -1,7 +1,6 @@
 package TeamRandomizer;
 import javafx.util.Pair;
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 public class Randomizer {
 
@@ -12,17 +11,31 @@ public class Randomizer {
 	}
 
 	public static void work(String input, String loginData){
+		Scanner scanner = new Scanner(System.in);
 		Parser parser = new Parser();
 		ArrayList<Pair< String, ArrayList<String> > > data = parser.getNameAndMailList(input);
 		Pair <String, String> loginCredentials = parser.getLoginCredentials(loginData);
 		int teamSize = parser.getTeamSize(loginData);
-		informTeamMembers(loginCredentials, generateTeams(data , teamSize));
+		ArrayList< ArrayList<Pair <String, ArrayList<String>>>> teamList = generateTeams(data , teamSize);
+		String redistribute = "";
+		while(!(redistribute.toLowerCase().contains("no"))){
+			teamList = generateTeams(data , teamSize);
+			showTeams(teamList);
+			System.out.println("Do you want to redistribute team members?");
+			System.out.println("Print \"Yes\" or \"No\"");
+			redistribute = scanner.next();
+		}
+		System.out.println("Do you want to inform team members?");
+		System.out.println("Print \"Yes\" or \"No\"");
+		String inform = scanner.next();
+		if(inform.toLowerCase().contains("yes")){
+			informTeamMembers(loginCredentials, teamList);
+		}
 	}
 
 
 	private static boolean informTeamMembers(Pair <String, String> loginCredentials, ArrayList< ArrayList<Pair <String, ArrayList<String>>>> teamList){
 
-		showTeams(teamList);
 
 		Mail mailService = new Mail();
 		String from = loginCredentials.getKey();
