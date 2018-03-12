@@ -4,6 +4,8 @@ Randomly separate people into groups and notify each group member about being in
 
 To run:
 
+
 javac -cp javax.mail.jar TeamRandomizer/*.java
+
 java -cp ".:javax.mail.jar" TeamRandomizer/Randomizer
 
