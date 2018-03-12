@@ -63,17 +63,19 @@ public class Parser {
 
 	Integer getTeamSize(String fileName){
 		int teamSize = 2;
+		int k = 0;
 		String line = null;
 		try{
 			Scanner fileIn = new Scanner(new File(fileName));
 			while(fileIn.hasNextLine())
 			{
+				k++;
 				line = fileIn.nextLine();
 			}
 		}catch(IOException ex){
 			System.out.println("Error reading file"+ fileName);
 		}
-		if(new Scanner(line).useDelimiter("\\D+").hasNextInt()){
+		if(new Scanner(line).useDelimiter("\\D+").hasNextInt()&& k>2){
 			teamSize = new Scanner(line).useDelimiter("\\D+").nextInt();
 		}
 		return teamSize;
